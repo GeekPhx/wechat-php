@@ -35,11 +35,11 @@ if ($echostr) {
 // TODO
 // 分析用户输入并作出处理
 
-$postData = $HTTP_RAW_POST_DATA;
-if (!$postData) {
-	echo "错误输入, 即将退出.";
-	exit(0);
+function getPostData() {
+	global $HTTP_RAW_POST_DATA;
+	return $HTTP_RAW_POST_DATA;
 }
+$postData = getPostData();
 
 # 解析XML字符串
 $xmlObject = simplexml_load_string($postData, 'SimpleXMLElement', LIBXML_NOCDATA);
